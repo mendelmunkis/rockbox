@@ -160,7 +160,10 @@ boomshine.lua
 #ifdef HAVE_LCD_COLOR
 pixel-painter.lua
 #endif /* HAVE_LCD_COLOR */
+picross.lua
 #endif /* PLUGIN_BUFFER_SIZE >= 0x80000 */
+#endif
+
 
 freecell.c
 rockblox1d.c
