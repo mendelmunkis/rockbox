@@ -57,6 +57,7 @@ logo,demos
 lrcplayer,apps
 lua,viewers
 lua_scripts,demos
+rockphys,demos
 fractals,demos
 main_menu_config,apps
 matrix,demos
