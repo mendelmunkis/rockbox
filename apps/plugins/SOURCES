@@ -9,6 +9,7 @@ credits.c
 cube.c
 dict.c
 dict2.c
+/*helloworld.c*/
 jackpot.c
 HTML_Parser.c
 keybox.c
@@ -39,6 +40,8 @@ shopper.c
 resistor.c
 otp.c
 starwars.c
+
+rockphys.c
 
 #ifdef USB_ENABLE_HID
 remote_control.c
