@@ -1195,6 +1195,9 @@ Lyre prototype 1 */
     (CONFIG_USBOTG == USBOTG_RK27XX)
 #define USB_HAS_BULK
 #define USB_HAS_INTERRUPT
+#if (CONFIG_USBOTG == USBOTG_ARC)
+#define USB_HAS_ISOCHRONOUS
+#endif
 #elif defined(CPU_TCC780X) || defined(CPU_TCC77X)
 #define USB_HAS_BULK
 #elif CONFIG_USBOTG == USBOTG_S3C6400X
@@ -1232,6 +1235,10 @@ Lyre prototype 1 */
 #else
 #define USB_ENABLE_CHARGING_ONLY
 #endif
+#endif
+
+#ifdef USB_HAS_ISOCHRONOUS
+#define USB_ENABLE_AUDIO
 #endif
 
 #endif /* BOOTLOADER */
