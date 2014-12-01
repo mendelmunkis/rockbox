@@ -4,6 +4,7 @@ battery_bench.c
 #endif
 BOFH.c
 chessclock.c
+clicker.c
 credits.c
 cube.c
 dict.c
