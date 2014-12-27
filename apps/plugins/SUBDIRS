@@ -46,6 +46,7 @@ sudoku
 reversi
 rattax
 goban
+unitconv
 frotz
 
 #ifndef OLYMPUS_MROBE_500
