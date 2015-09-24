@@ -170,7 +170,14 @@ option from the \setting{Context Menu} (see \reference{ref:Contextmenu}).}
     Shortcuts             & \fname{.link}                    &   \\
     MS Windows shortcuts  & \fname{.lnk}                     &   \\
     Chip-8 Emulator       & \fname{.ch8}                     &   \\
+<<<<<<< HEAD
     Frotz                 & \fname{.z1} to \fname{.z8}       &   \\
+=======
+    \opt{usb_hid}{
+        Ducky++               & \fname{.ds}                      &   \\
+    }}
+    Frotz                 & \fname{.z1 - .z8}                &   \\
+>>>>>>> [WIP] DuckyScript plugin
     Image Viewer          & \fname{.bmp, .jpg, .jpeg, .png\opt{lcd_color}{, .ppm}}  &   \\
     Lua scripting language& \fname{.lua}                     &   \\
     \opt{swcodec}{\nopt{lowmem}{
@@ -202,6 +209,8 @@ option from the \setting{Context Menu} (see \reference{ref:Contextmenu}).}
 {\input{plugins/winshortcuts.tex}}
 
 \opt{lcd_bitmap}{\input{plugins/chip8emulator.tex}}
+
+\opt{usb_hid}{\input{plugins/ducky.tex}}
 
 \opt{lcd_bitmap}{\input{plugins/frotz.tex}}
 

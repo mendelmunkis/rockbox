@@ -7,7 +7,7 @@
  *                     \/            \/     \/    \/            \/
  * $Id$
  *
- * Copyright (C) 2002 BjÃ¶rn Stenberg
+ * Copyright (C) 2002 Björn Stenberg
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -584,12 +584,7 @@ struct plugin_api {
                            intptr_t data);
     void (*queue_reply)(struct event_queue *q, intptr_t retval);
 
-<<<<<<< HEAD
-=======
     void (*usb_acknowledge)(long id);
-#ifdef USB_FAKE_VID_PID
-    void (*usb_change_id)(uint16_t vid, uint16_t pid);
-#endif
 #ifdef USB_ENABLE_HID
     void (*usb_hid_send)(usage_page_t usage_page, int id);
 #ifdef USB_FAKE_VID_PID
@@ -597,7 +592,6 @@ struct plugin_api {
 #endif
 #endif
 
->>>>>>> 7c1e2593cf... Allows for editable USB vendor/product ID's.
 #ifdef RB_PROFILE
     void (*profile_thread)(void);
     void (*profstop)(void);
