@@ -7,7 +7,7 @@
  *                     \/            \/     \/    \/            \/
  * $Id$
  *
- * Copyright (C) 2002 BjÃ¶rn Stenberg
+ * Copyright (C) 2002 Björn Stenberg
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -736,6 +736,9 @@ static const struct plugin_api rockbox_api = {
     /* usb */
     usb_inserted,
     usb_acknowledge,
+#ifdef USB_FAKE_VID_PID
+    usb_change_id,
+#endif
 #ifdef USB_ENABLE_HID
     usb_hid_send,
 #endif
