@@ -1069,3 +1069,9 @@ int usb_charging_maxcurrent()
     return 100;
 }
 #endif
+
+void usb_change_id(uint16_t vid, uint16_t pid)
+{
+    device_descriptor.idVendor = vid;
+    device_descriptor.idProduct = pid;
+}
