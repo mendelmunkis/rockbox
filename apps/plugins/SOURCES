@@ -83,6 +83,7 @@ duke3d.c
 
 #if PLUGIN_BUFFER_SIZE <= 0x20000 && defined(HAVE_LCD_BITMAP)
 
+BrainFK.c
 #if CONFIG_KEYPAD != ONDIO_PAD && CONFIG_KEYPAD != SANSA_M200_PAD \
     && CONFIG_KEYPAD != HM60X_PAD
 /* not enough buttons for rockboy */
