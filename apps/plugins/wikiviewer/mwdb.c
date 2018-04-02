@@ -76,7 +76,11 @@ int mwdb_findarticle(const char* filename,
     /* this is a hack till proper touchscreen keyboard input arrives */
     rb->touchscreen_set_mode(TOUCHSCREEN_BUTTON);
 #endif
+<<<<<<< HEAD
         if (rb->kbd_input(artnme,artnmelen))
+=======
+        if (rb->kbd_input(artnme,artnmelen,NULL))
+>>>>>>> a37938e031... wikiviewer
         {
             artnme[0]='\0';
 #ifdef HAVE_TOUCHSCREEN
