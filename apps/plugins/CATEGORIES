@@ -37,6 +37,7 @@ frotz,viewers
 goban,games
 greyscale,demos
 helloworld,demos
+HTML_Parser,viewers
 imageviewer,viewers
 infones,viewers
 invadrox,games
