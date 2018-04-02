@@ -2,7 +2,7 @@
 #if !defined(SIMULATOR) && (CONFIG_BATTERY_MEASURE != 0)
 battery_bench.c
 #endif
-bofh.c
+BOFH.c
 chessclock.c
 credits.c
 cube.c
