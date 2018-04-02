@@ -112,4 +112,6 @@ lua
 /* xrick is confirmed to run on these player models. */
 xrick
 #endif
+#if !defined(SIMULATOR)
 wikiviewer
+#endif
