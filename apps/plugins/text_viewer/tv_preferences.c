@@ -115,7 +115,6 @@ void tv_set_default_preferences(struct tv_preferences *p)
     p->font_id = rb->global_status->font_id[SCREEN_MAIN];
     p->autoscroll_speed = 10;
     p->night_mode  = false;
-    p->narrow_mode = NM_PAGE;
     p->indent_spaces = 2;
     /* Set codepage to system default */
     p->encoding = rb->global_settings->default_codepage;

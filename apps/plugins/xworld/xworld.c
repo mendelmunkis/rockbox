@@ -34,8 +34,8 @@ enum plugin_status plugin_start(const void* parameter)
     (void) parameter;
 
     /* no trailing slashes */
-    const char *dataPath = "/.rockbox/xworld";
-    const char *savePath = "/.rockbox/xworld";
+    const char *dataPath = "/.rockbox/data/xworld";
+    const char *savePath = "/.rockbox/data/xworld";
     g_debugMask = XWORLD_DEBUGMASK;
 
     engine_create(&e, &sys, dataPath, savePath);
