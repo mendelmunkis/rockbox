@@ -7,6 +7,7 @@ credits.c
 cube.c
 dict.c
 jackpot.c
+HTML_Parser.c
 keybox.c
 logo.c
 lrcplayer.c
