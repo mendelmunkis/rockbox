@@ -25,6 +25,7 @@
 #include "tv_action.h"
 #include "tv_button.h"
 #include "tv_preferences.h"
+#include "tv_pager.h"
 
 
 
@@ -224,7 +225,23 @@ enum plugin_status plugin_start(const void* file)
         }
         if (autoscroll)
         {
-            if(old_tick <= *rb->current_tick - (110 - preferences->autoscroll_speed * 10))
+            if(preferences->autoscroll_speed > 10)
+		    {
+		        int offset_page = 0;
+                int offset_line = 1;
+
+                if ((TV_VERTICAL_SCROLL_PREFS == TV_VERTICAL_SCROLL_PAGE) ||
+                    (TV_VERTICAL_SCROLL_PREFS == TV_VERTICAL_SCROLL_PREFS && preferences->vertical_scroll_mode == VS_PAGE))
+                {
+                    offset_page+= preferences->autoscroll_speed;
+#ifdef HAVE_LCD_BITMAP
+                    offset_line = (preferences->overlap_page_mode)? -1:0;
+		
+#endif
+                }
+                tv_move_screen(offset_page, offset_line, SEEK_CUR);
+            }
+            else if(old_tick <= *rb->current_tick - (110 - preferences->autoscroll_speed * 10))
             {
                 tv_scroll_down(TV_VERTICAL_SCROLL_PREFS);
                 old_tick = *rb->current_tick;

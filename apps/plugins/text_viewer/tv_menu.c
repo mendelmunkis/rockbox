@@ -96,7 +96,7 @@ static bool tv_overlap_page_mode_setting(void)
 static bool tv_autoscroll_speed_setting(void)
 {
     return rb->set_int("Auto-scroll Speed", "", UNIT_INT, 
-                       &new_prefs.autoscroll_speed, NULL, 1, 1, 10, NULL);
+                       &new_prefs.autoscroll_speed, NULL, 1, 1, 11, NULL);
 }
 
 static bool tv_narrow_mode_setting(void)

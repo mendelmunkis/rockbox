@@ -120,7 +120,7 @@ void tv_set_default_preferences(struct tv_preferences *p)
     p->footer_mode = false;
     p->statusbar   = false;
 #endif
-    p->autoscroll_speed = 1;
+    p->autoscroll_speed = 11;
     p->narrow_mode = NM_PAGE;
     p->indent_spaces = 2;
     /* Set codepage to system default */
