@@ -68,9 +68,9 @@ const struct button_mapping *plugin_contexts[]
 #define MAZEZAM_TEXT_CONTINUE        "Play from checkpoint"
 #define MAZEZAM_TEXT_PLAY_NEW_GAME   "Start New Game"
 
-#define MAZEZAM_START_LIVES         3 /* how many lives at game start */
+#define MAZEZAM_START_LIVES         4* how many lives at game start */
 #define MAZEZAM_FIRST_CHECKPOINT    3 /* The level at the first checkpoint */
-#define MAZEZAM_CHECKPOINT_INTERVAL 4 /* A checkpoint every _ levels */
+#define MAZEZAM_CHECKPOINT_INTERVAL 2 /* A checkpoint every _ levels */
 
 #ifdef HAVE_LCD_COLOR
 #define MAZEZAM_HEADING_COLOR      LCD_RGBPACK(255,255,  0) /* Yellow    */

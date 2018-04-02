@@ -1047,7 +1047,7 @@ static void init_game (void)
 {
     player.level = 0;
     player.score = 0;
-    player.lives = 3;
+    player.lives = 5;
     player.gameover = false;
     player.drawing = false;
     init_board ();
@@ -1146,7 +1146,7 @@ static int xobox_menu(bool ingame)
                 break;
             case 3:
                 rb->set_int ("Difficulty", "", UNIT_INT, &difficulty, NULL,
-                            5, 50, 95, NULL);
+                            5, 25, 95, NULL);
                 break;
             case 4:
                 highscore_show(-1, highscores, NUM_SCORES, true);

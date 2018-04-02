@@ -158,9 +158,9 @@ static inline int rand_2_or_4(void)
 {
     /* 1 in 10 chance of a four */
     if(rb->rand() % 10 == 0)
-        return 4;
+        return 131072;
     else
-        return 2;
+        return 65536;
 }
 
 /* displays the help text */

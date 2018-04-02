@@ -185,6 +185,7 @@ static struct settings {
     int compdiff;
     bool spoil_enabled;
     bool persistent_units;
+	int a;
 } superdom_settings;
 
 static struct resources humanres;
@@ -415,7 +416,7 @@ static int calc_strength(int colour, int x, int y)
 void gen_interest(void)
 {
     /* Interest should be around 10% */
-    int interest = 7+rb->rand()%6;
+    int interest = superdom_settings.a+rb->rand()%6;
     humanres.bank = humanres.bank+(interest*humanres.bank/100);
     /* Different interest for AI player */
     interest = 7+rb->rand()%6;
@@ -538,7 +539,7 @@ static int settings_menu(void)
     MENUITEM_STRINGLIST(menu, "Super Domination Settings", NULL,
                         "Computer starting farms", "Computer starting factories",
                         "Human starting farms", "Human starting factories",
-                        "Starting cash", "Starting food", "Computer difficulty","Food spoilage", "Persistent units", "Moves per turn");
+                        "Starting cash", "Starting food", "Computer difficulty","Food spoilage", "Persistent units", "Moves per turn", "Debug");
 
     while(1)
     {
@@ -598,7 +599,12 @@ static int settings_menu(void)
         case 9:
             rb->set_int("Moves per turn", "", UNIT_INT,
                         &superdom_settings.movesperturn, NULL,
-                        1, 1, 5, NULL);
+                        1, 1, 10, NULL);
+            break;
+			case 10:
+            rb->set_int("Debug", "", UNIT_INT,
+                        &superdom_settings.a, NULL,
+                        7, 2, 93, NULL);
             break;
         case MENU_ATTACHED_USB:
             return RET_VAL_USB;
@@ -733,6 +739,7 @@ static int save_game(void)
     rb->write(fd, &superdom_settings.startcash, sizeof(int));
     rb->write(fd, &superdom_settings.startfood, sizeof(int));
     rb->write(fd, &superdom_settings.movesperturn, sizeof(int));
+	rb->write(fd, &superdom_settings.a, sizeof(int));
     rb->close(fd);
     return 0;
 }
@@ -2375,6 +2382,7 @@ static int load_game(const char* file)
     rb->read(fd, &superdom_settings.startcash, sizeof(int));
     rb->read(fd, &superdom_settings.startfood, sizeof(int));
     rb->read(fd, &superdom_settings.movesperturn, sizeof(int));
+	rb->read(fd, &superdom_settings.a, sizeof(int));
     rb->close(fd);
     return 0;
 }
@@ -2388,6 +2396,7 @@ static void default_settings(void)
     superdom_settings.startcash = 0;
     superdom_settings.startfood = 0;
     superdom_settings.movesperturn = 2;
+	superdom_settings.a = 7;
     superdom_settings.compdiff=2;
     superdom_settings.spoil_enabled=false;
     superdom_settings.persistent_units=false;
