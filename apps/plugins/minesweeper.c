@@ -490,7 +490,7 @@ static tile minefield[MAX_HEIGHT][MAX_WIDTH];
 static int mine_num = 0;
 
 /* percentage of mines on minefield used during generation */
-static int percent = 16;
+static int percent = 40;
 
 /* number of tiles left on the game */
 static int tiles_left;
