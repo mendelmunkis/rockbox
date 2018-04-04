@@ -8,6 +8,7 @@ clicker.c
 credits.c
 cube.c
 dict.c
+dict2.c
 jackpot.c
 HTML_Parser.c
 keybox.c
