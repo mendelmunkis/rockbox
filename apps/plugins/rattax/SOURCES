@@ -1,0 +1,7 @@
+rattax.c
+board.c
+bsets.c
+draw.c
+util.c
+cplayer.c
+state.c

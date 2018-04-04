@@ -556,6 +556,17 @@ pegbox_pieces.9x7x1.bmp
 puzzles_cursor.11x16x24.bmp
 #endif
 
+/* Rattax */
+#if (LCD_WIDTH >= 160) && (LCD_HEIGHT >= 160) && (LCD_DEPTH >= 16)
+rattax_cells.20x20x16.bmp
+#elif (LCD_WIDTH >= 121) && (LCD_HEIGHT >= 121)
+rattax_cells.17x17x2.bmp
+#elif (LCD_WIDTH >= 79) && (LCD_HEIGHT >= 79)
+rattax_cells.11x11x2.bmp
+#else
+rattax_cells.9x9x2.bmp
+#endif
+
 /* Rockblox */
 #if LCD_DEPTH >= 16 /* colour versions*/
 #if   (LCD_WIDTH == 640) && (LCD_HEIGHT == 480)

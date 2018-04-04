@@ -38,6 +38,7 @@ fire,demos
 fireworks,demos
 firmware_flash,apps
 flipit,games
+freecell,games
 frotz,viewers
 goban,games
 greyscale,demos
@@ -88,6 +89,7 @@ pong,games
 ppm,viewers
 properties,viewers
 random_folder_advance_config,apps
+rattax,games
 remote_control,apps
 resistor,apps
 reversi,games

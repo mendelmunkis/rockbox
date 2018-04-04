@@ -51,6 +51,7 @@ fractals
 imageviewer
 sudoku
 reversi
+rattax
 goban
 
 /* setjmp/longjmp are not implemented on sh */
