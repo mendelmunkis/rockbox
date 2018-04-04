@@ -399,7 +399,7 @@ static void rsh_handler(void)
 
 static void sqrt_handler(void)
 {
-    push(isqrt(pop()) + 1);
+    push(fp_sqrt(pop(),0) + 1);
 }
 
 static void decl_const(void)

@@ -657,7 +657,7 @@ vartype eval_rsh(vartype a1, vartype a2)
 vartype eval_sqrt(vartype a1, vartype a2)
 {
     (void) a2;
-    return isqrt(a1) + 1;
+    return fp_sqrt(a1,0) + 1;
 }
 
 enum {ASSOC_NONE=0, ASSOC_LEFT, ASSOC_RIGHT};
