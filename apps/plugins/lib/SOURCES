@@ -9,6 +9,7 @@ playback_control.c
 rgb_hsv.c
 highscore.c
 simple_viewer.c
+viewer.c
 display_text.c
 strncpy.c
 stdio_compat.c
