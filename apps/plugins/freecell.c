@@ -432,7 +432,7 @@
 CONFIG_KEYPAD == MROBE500_PAD
 #   define FC_QUIT          BUTTON_POWER
 
-#elif (CONFIG_KEYPAD == SAMSUNG_YH920_PAD)
+#elif (CONFIG_KEYPAD == SAMSUNG_YH92X_PAD)
 #   define FC_QUIT          BUTTON_REC
 #   define FC_UP            BUTTON_UP
 #   define FC_DOWN          BUTTON_DOWN
