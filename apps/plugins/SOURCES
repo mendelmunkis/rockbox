@@ -91,6 +91,7 @@ wolf3d.c
 
 #if PLUGIN_BUFFER_SIZE <= 0x20000
 
+BrainFK.c
 #if CONFIG_KEYPAD != SANSA_M200_PAD \
     && CONFIG_KEYPAD != HM60X_PAD
 /* not enough buttons for rockboy */
