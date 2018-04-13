@@ -216,7 +216,7 @@ static bool tv_read_preferences(int pfd, int version, struct tv_preferences *pre
 
     if (version > 6)
         prefs->statusbar = (*p++ != 0);
-    if (version > 7)
+    if (version > 6)
         prefs->night_mode = (*p++ != 0);
 
 #ifdef HAVE_LCD_BITMAP
