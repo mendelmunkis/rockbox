@@ -544,7 +544,7 @@ extern void lcd_set_invert_display(bool yesno);
 #ifdef HAVE_BACKLIGHT_INVERSION
 extern void lcd_set_backlight_inversion(bool yesno);
 #endif /* HAVE_BACKLIGHT_INVERSION */
-extern void lcd_set_flip(bool yesno);
+extern void lcd_set_flip(int direction);
 
 extern void lcd_set_drawmode(int mode);
 extern int  lcd_get_drawmode(void);

@@ -644,7 +644,7 @@ struct user_settings
     bool invert;    /* invert display */
 #endif
 #ifdef HAVE_LCD_FLIP
-    bool flip_display; /* turn display (and button layout) by 180 degrees */
+    int flip_display; /* turn display (and button layout) by 180 degrees */
 #endif
     int  cursor_style; /* style of the selection cursor */
     int  screen_scroll_step;

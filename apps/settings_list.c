@@ -884,8 +884,13 @@ const struct settings_list settings[] = {
                  LANG_INVERT_LCD_INVERSE, LANG_NORMAL, lcd_set_invert_display),
 #endif
 #ifdef HAVE_LCD_FLIP
-    OFFON_SETTING(0, flip_display, LANG_FLIP_DISPLAY, false, "flip display",
-                  NULL),
+    CHOICE_SETTING(1, flip_display, LANG_FLIP_DISPLAY,
+                   0,"flip display",
+                   "none,upside down,landscape,flipped landscape",
+                   NULL, 4,
+                   "None","Upside down","Landscape","Flipped landscape"),
+/*    OFFON_SETTING(0, flip_display, LANG_FLIP_DISPLAY, false, "flip display",*/
+/*                  NULL),*/
 #endif
     /* display */
      CHOICE_SETTING(F_TEMPVAR|F_THEMESETTING, cursor_style, LANG_INVERT_CURSOR,

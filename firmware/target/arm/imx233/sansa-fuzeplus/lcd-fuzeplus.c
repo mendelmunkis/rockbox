@@ -543,14 +543,29 @@ void lcd_set_invert_display(bool yesno)
 #endif
 
 #ifdef HAVE_LCD_FLIP
-void lcd_set_flip(bool yesno)
+void lcd_set_flip(int direction)
 {
-    lcd_reg_3_val = yesno ? 0x1000 : 0x1030;
+    switch(direction)
+    {
+    case 1:
+        lcd_reg_3_val = 0x1000;
+        break;
+    case 2:
+        lcd_reg_3_val = 0x1028;
+        break;
+    case 3:
+        lcd_reg_3_val = 0x1018;
+        break;
+    case 0:
+    default:
+        lcd_reg_3_val = 0x1030;
+        break;
+    }
     #ifdef HAVE_LCD_ENABLE
     if(!lcd_on)
         return;
     #endif
-    /* same for both kinds */
+    /* same for all kinds */
     lcd_write_reg(3, lcd_reg_3_val);
 }
 #endif
@@ -573,12 +588,23 @@ void lcd_update_rect(int x, int y, int w, int h)
     h = MIN(h, LCD_HEIGHT - y);
 
     imx233_lcdif_wait_ready();
-    lcd_write_reg(0x50, x);
-    lcd_write_reg(0x51, x + w - 1);
-    lcd_write_reg(0x52, y);
-    lcd_write_reg(0x53, y + h - 1);
-    lcd_write_reg(0x20, x);
-    lcd_write_reg(0x21, y);
+    if( lcd_read_reg(3) & 8)
+    {
+        lcd_write_reg(0x50, LCD_WIDTH - y - h);
+        lcd_write_reg(0x51, LCD_WIDTH - y - 1);
+        lcd_write_reg(0x52, x);
+        lcd_write_reg(0x53, x + w - 1);
+        lcd_write_reg(0x20, y);
+        lcd_write_reg(0x21, x);
+    }else
+    {
+        lcd_write_reg(0x50, x);
+        lcd_write_reg(0x51, x + w - 1);
+        lcd_write_reg(0x52, y);
+        lcd_write_reg(0x53, y + h - 1);
+        lcd_write_reg(0x20, x);
+        lcd_write_reg(0x21, y);
+    }
     lcd_write_reg(0x22, 0);
     imx233_lcdif_wait_ready();
     imx233_lcdif_set_word_length(16);
