@@ -865,7 +865,7 @@ bool usb_audio_fast_transfer_complete(int ep, int dir, int status, int length)
 
     if(ep == out_iso_ep_adr && usb_as_playback_intf_alt == 1)
     {
-        _logf("frame: %d", usb_drv_get_frame_number());
+        logf("frame: %d", usb_drv_get_frame_number());
         if(status != 0)
             return true; /* FIXME how to handle error here ? */
         /* store length, queue buffer */
