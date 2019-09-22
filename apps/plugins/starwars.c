@@ -13,7 +13,7 @@ void myread_line(int fd, char *buf, size_t sz)
         backlight_use_settings();
         exit(PLUGIN_OK);
     }
-rb->debugf("%s\n",buf);
+    //rb->debugf("%s\n",buf);
 }
 
 enum plugin_status plugin_start(const void* param)
