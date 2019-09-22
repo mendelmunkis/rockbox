@@ -843,7 +843,7 @@ struct plugin_api {
 # endif
 #endif
     /* usb */
-    bool (*usb_inserted)(void);    void (*usb_acknowledge)(long id);
+    bool (*usb_inserted)(void);
     void (*usb_acknowledge)(long id);
 #ifdef USB_ENABLE_HID
     void (*usb_hid_send)(usage_page_t usage_page, int id);
