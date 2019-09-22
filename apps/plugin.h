@@ -583,14 +583,6 @@ struct plugin_api {
                            intptr_t data);
     void (*queue_reply)(struct event_queue *q, intptr_t retval);
 
-    void (*usb_acknowledge)(long id);
-#ifdef USB_ENABLE_HID
-    void (*usb_hid_send)(usage_page_t usage_page, int id);
-#ifdef USB_FAKE_VID_PID
-    void (*usb_change_id)(uint16_t vid, uint16_t pid);
-#endif
-#endif
-
 #ifdef RB_PROFILE
     void (*profile_thread)(void);
     void (*profstop)(void);
@@ -851,10 +843,13 @@ struct plugin_api {
 # endif
 #endif
     /* usb */
-    bool (*usb_inserted)(void);
+    bool (*usb_inserted)(void);    void (*usb_acknowledge)(long id);
     void (*usb_acknowledge)(long id);
 #ifdef USB_ENABLE_HID
     void (*usb_hid_send)(usage_page_t usage_page, int id);
+#endif
+#ifdef USB_FAKE_VID_PID
+    void (*usb_change_id)(uint16_t vid, uint16_t pid);
 #endif
     /* misc */
 #if (CONFIG_PLATFORM & PLATFORM_NATIVE)
