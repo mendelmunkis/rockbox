@@ -1,3 +1,4 @@
+#if 0
 /* plugins common to all models */
 #if !defined(SIMULATOR) && (CONFIG_BATTERY_MEASURE != 0)
 battery_bench.c
@@ -273,3 +274,4 @@ test_touchscreen.c
 #endif
 test_viewports.c
 #endif /* HAVE_TEST_PLUGINS */
+#endif
