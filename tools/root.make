@@ -81,6 +81,7 @@ ifeq (,$(findstring checkwps,$(APP_TYPE)))
       ifeq (,$(findstring bootloader,$(APPSDIR)))
         include $(ROOTDIR)/lib/skin_parser/skin_parser.make
         include $(ROOTDIR)/lib/tlsf/libtlsf.make
+        include $(ROOTDIR)/lib/freetype/freetype.make
       endif
     endif
   endif
@@ -93,6 +94,7 @@ ifndef APP_TYPE
     include $(ROOTDIR)/lib/arm_support/arm_support.make
   endif
 endif
+  include $(ROOTDIR)/lib/freetype/freetype.make
 
 ifeq (,$(findstring bootloader,$(APPSDIR)))
   ifeq (,$(findstring checkwps,$(APP_TYPE)))
@@ -118,6 +120,7 @@ else ifneq (,$(findstring database,$(APP_TYPE)))
 else ifneq (,$(findstring warble,$(APP_TYPE)))
   include $(ROOTDIR)/lib/rbcodec/test/warble.make
   include $(ROOTDIR)/lib/tlsf/libtlsf.make
+  include $(ROOTDIR)/lib/freetype/freetype.make
   include $(ROOTDIR)/lib/rbcodec/rbcodec.make
 else # core
   include $(APPSDIR)/lang/lang.make
