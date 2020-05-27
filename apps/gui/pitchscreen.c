@@ -1143,3 +1143,94 @@ int gui_syncpitchscreen_run(void)
     pop_current_activity();
     return 0;
 }
+
+int set_speed(int mode)
+{
+    int32_t pitch = sound_get_pitch();
+    int32_t new_speed;
+
+//    push_current_activity(ACTIVITY_PITCHSCREEN);
+
+#if CONFIG_CODEC == SWCODEC
+    int32_t new_stretch;
+
+    /* the speed variable holds the apparent speed of the playback */
+    int32_t speed;
+    if (dsp_timestretch_available())
+    {
+        speed = GET_SPEED(pitch, dsp_get_timestretch());
+    }
+    else
+    {
+        speed = pitch;
+    }
+//    new_speed=speed;
+
+    /* Figure out whether to be in timestretch mode */
+    if (global_settings.pitch_mode_timestretch && !dsp_timestretch_available())
+    {
+        global_settings.pitch_mode_timestretch = false;
+        settings_save();
+    }
+//    pcmbuf_set_low_latency(true);
+            if(mode==1)
+            {
+                if (global_settings.pitch_mode_timestretch)
+                {
+                    new_speed = PITCH_MAX;
+                    /* snap to whole numbers */
+                    if(new_speed % PITCH_SPEED_PRECISION != 0)
+                        new_speed -= new_speed % PITCH_SPEED_PRECISION;
+                    at_limit = false;
+                }
+            }
+            else
+            {
+                pitch = PITCH_SPEED_100;
+                sound_set_pitch(pitch);
+                speed = PITCH_SPEED_100;
+                if (dsp_timestretch_available())
+                {
+                    dsp_set_timestretch(PITCH_SPEED_100);
+                    at_limit = false;
+                }
+           }
+
+        if(new_speed)
+        {
+            new_stretch = GET_STRETCH(pitch, new_speed);
+
+            /* limit the amount of stretch */
+            if(new_stretch > STRETCH_MAX)
+            {
+                new_stretch = STRETCH_MAX;
+                new_speed = GET_SPEED(pitch, new_stretch);
+            }
+            else if(new_stretch < STRETCH_MIN)
+            {
+                new_stretch = STRETCH_MIN;
+                new_speed = GET_SPEED(pitch, new_stretch);
+            }
+
+            new_stretch = GET_STRETCH(pitch, new_speed);
+            if(new_stretch >= STRETCH_MAX || 
+               new_stretch <= STRETCH_MIN)
+            {
+                at_limit = true;
+            }
+
+            /* set the amount of stretch */
+            dsp_set_timestretch(new_stretch);
+
+            /* update the speed variable with the new speed */
+            speed = new_speed;
+
+            /* Reset new_speed so we only call dsp_set_timestretch */
+            /* when needed                                         */
+            new_speed = 0;
+        }
+//    pcmbuf_set_low_latency(false);
+#endif
+//    pop_current_activity();
+    return 0;
+}

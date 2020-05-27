@@ -1625,6 +1625,20 @@
   </voice>
 </phrase>
 <phrase>
+  id: LANG_SKIM_MODE
+  desc: skim mode
+  user: core
+  <source>
+    *: "Skim Mode"
+  </source>
+  <dest>
+    *: "Skim Mode"
+  </dest>
+  <voice>
+    *: "Skim Mode"
+  </voice>
+</phrase>
+<phrase>
   id: LANG_CROSSFADE
   desc: in playback settings
   user: core
