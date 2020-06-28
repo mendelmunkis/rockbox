@@ -275,3 +275,4 @@ test_touchscreen.c
 test_viewports.c
 #endif /* HAVE_TEST_PLUGINS */
 #endif
+test_freetype.c

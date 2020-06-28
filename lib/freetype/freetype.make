@@ -25,6 +25,6 @@ $(BUILDDIR)/lib/freetype/src/%.o: $(FREETYPE_DIR)/src/%.c
 	$(SILENT)mkdir -p $(dir $@)
 	$(call PRINTS,CC $(subst $(ROOTDIR)/,,$<))$(CC) -c $< -o $@ $(FTINCLUDES) $(FREETYPEFLAGS)
 
-$(FREETYPE): $(FREETYPE_OBJ)
+$(LIBFREETYPE): $(FREETYPE_OBJ)
 	$(SILENT)$(shell rm -f $@)
 	$(call PRINTS,AR $(@F))$(AR) rcs $@ $^ >/dev/null
