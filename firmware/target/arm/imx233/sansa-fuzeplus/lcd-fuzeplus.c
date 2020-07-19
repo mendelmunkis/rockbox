@@ -46,7 +46,7 @@ static int lcd_dcp_channel = -1;
 static int lcd_reg_0x61_val = 1; /* used to invert display */
 #endif
 #ifdef HAVE_LCD_FLIP
-static int lcd_reg_3_val = 0x1030; /* controls to flip display */
+static int lcd_reg_3_val = 0x1230; /* controls to flip display */
 #endif
 
 static enum lcd_kind_t
@@ -267,7 +267,7 @@ static void lcd_init_seq_7783(void)
     _mdelay(200)
     _lcd_write_reg(1, 0x100)
     _lcd_write_reg(2, 0x700)
-    _lcd_write_reg(3, 0x1030)
+    _lcd_write_reg(3, 0x1230)
     _lcd_write_reg(7, 0x121)
     _lcd_write_reg(8, 0x302)
     _lcd_write_reg(9, 0x200)
@@ -322,7 +322,7 @@ static void lcd_init_seq_9325(void)
     _lcd_write_reg(0, 1)
     _lcd_write_reg(1, 0x100)
     _lcd_write_reg(2, 0x700)
-    _lcd_write_reg(3, 0x1030)
+    _lcd_write_reg(3, 0x1230)
     _lcd_write_reg(4, 0)
     _lcd_write_reg(8, 0x207)
     _lcd_write_reg(9, 0)
@@ -545,7 +545,7 @@ void lcd_set_invert_display(bool yesno)
 #ifdef HAVE_LCD_FLIP
 void lcd_set_flip(bool yesno)
 {
-    lcd_reg_3_val = yesno ? 0x1000 : 0x1030;
+    lcd_reg_3_val = yesno ? 0x1200 : 0x1230;
     #ifdef HAVE_LCD_ENABLE
     if(!lcd_on)
         return;
