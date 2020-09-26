@@ -502,7 +502,7 @@ static int do_shutdown(void)
         sys_poweroff();
     return 0;
 }
-MENUITEM_FUNCTION(do_shutdown_item, 0, ID2P(LANG_SHUTDOWN),
+MENUITEM_FUNCTION(do_shutdown_item, 0, "Shutdown",
                   do_shutdown, NULL, NULL, Icon_NOICON);
 
 struct menu_item_ex root_menu_;

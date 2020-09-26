@@ -435,7 +435,7 @@ void viewer_exit(int newretval)
 /* Viewer menu */
 bool viewer_menu_search(void)
 {
-    rb->kbd_input(search, sizeof(search));
+    rb->kbd_input(search, sizeof(search), NULL);
     if (viewer_search())
         return true;
     else

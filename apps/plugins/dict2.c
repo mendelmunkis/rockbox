@@ -846,7 +846,7 @@ enum dict_action dict_main(void)
 #endif /*HAVE_FLASH_STORAGE*/
 
         rb->strcpy(old, search);
-        rb->kbd_input(search, WORDLEN);
+        rb->kbd_input(search, WORDLEN, NULL);
         /* exit if the search string is empty or the user didn't change it */
         if (!rb->strlen(search) ||
             (!new_search && !rb->strncmp(old, search, sizeof(old)) ))
