@@ -34,6 +34,7 @@ wav64.c
 tta.c
 wmapro.c
 ay.c
+vtx.c
 gbs.c
 hes.c
 nsf.c
