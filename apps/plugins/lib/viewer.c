@@ -105,7 +105,6 @@ static void viewer_draw(const char *s)
     const char *p, *eol;
     int line, len;
     char buf[VIEWER_LINE_BUF];
-	int left_margin=0;
 
     rb->lcd_clear_display();
 
@@ -119,7 +118,7 @@ static void viewer_draw(const char *s)
                                 VIEWER_SCROLLBAR_WIDTH-1, LCD_HEIGHT,
                                 txt->lines+rows-1, txt->pos, txt->pos+rows,
                                 VERTICAL);
-        left_margin=VIEWER_SCROLLBAR_WIDTH;
+        int left_margin=VIEWER_SCROLLBAR_WIDTH;
     }
 #endif
 
@@ -435,7 +434,7 @@ void viewer_exit(int newretval)
 /* Viewer menu */
 bool viewer_menu_search(void)
 {
-    rb->kbd_input(search, sizeof(search));
+    rb->kbd_input(search, sizeof(search), NULL);
     if (viewer_search())
         return true;
     else
