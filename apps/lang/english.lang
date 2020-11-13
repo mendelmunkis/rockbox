@@ -6241,6 +6241,23 @@
   </voice>
 </phrase>
 <phrase>
+  id: LANG_SHUTDOWN
+  desc: in main menu
+  user: core
+  <source>
+    *: "Shut down"
+    soft_shutdown: "Shut down"
+  </source>
+  <dest>
+    *: "Shut down"
+    soft_shutdown: "Shut down"
+  </dest>
+  <voice>
+    *: "Shut down"
+    soft_shutdown: "Shut down"
+  </voice>
+</phrase>
+<phrase>
   id: LANG_ROCKBOX_INFO
   desc: displayed topmost on the info screen and in the info menu
   user: core
