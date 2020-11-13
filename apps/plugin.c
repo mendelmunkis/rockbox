@@ -728,11 +728,11 @@ static const struct plugin_api rockbox_api = {
     /* usb */
     usb_inserted,
     usb_acknowledge,
-#ifdef USB_FAKE_VID_PID
-    usb_change_id,
-#endif
 #ifdef USB_ENABLE_HID
     usb_hid_send,
+#endif
+#ifdef USB_FAKE_VID_PID
+    usb_change_id,
 #endif
     /* misc */
 #if (CONFIG_PLATFORM & PLATFORM_NATIVE)
