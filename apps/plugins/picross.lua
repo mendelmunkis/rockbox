@@ -397,6 +397,7 @@ function State:fillSquare()
             self.board[self.cursor.y][self.cursor.x] = '.'
         else -- '.' or 'x'
             -- fill square
+--[[
             if self.solution[self.cursor.y - self.numbersh][self.cursor.x - self.numbersw] == '*' then
                 self.board[self.cursor.y][self.cursor.x] = '*'
             else
@@ -404,6 +405,8 @@ function State:fillSquare()
                 -- "x" square for convenience
                 self.board[self.cursor.y][self.cursor.x] = 'x'
             end
+]]--
+            self.board[self.cursor.y][self.cursor.x] = 'x'
         end
     end
 
