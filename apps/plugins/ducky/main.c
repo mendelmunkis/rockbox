@@ -1511,7 +1511,7 @@ int input_handler(char **save, int *keystate, int *nkeys, int *repeats_left)
     {
         char buf[32];
         rb->memset(buf, 0, sizeof(buf));
-        if(rb->kbd_input(buf, sizeof(buf)) < 0)
+        if(rb->kbd_input(buf, sizeof(buf),NULL) < 0)
             setVariable(varname, 0);
         else
         {
@@ -1537,7 +1537,7 @@ int prompt_handler(char **save, int *keystate, int *nkeys, int *repeats_left)
         char buf[32];
         rb->memset(buf, 0, sizeof(buf));
         vid_writef("%s? ", varname);
-        if(rb->kbd_input(buf, sizeof(buf)) < 0)
+        if(rb->kbd_input(buf, sizeof(buf),NULL) < 0)
             setVariable(varname, 0);
         else
         {

@@ -38,11 +38,10 @@ unsigned int mwdb_p_xtpt;
 static int mwdb_nprintf(const char *fmt, ...)
 {
     char p_buf[50];
-    bool ok;
     va_list ap;
 
     va_start(ap, fmt);
-    ok = rb->vsnprintf(p_buf,sizeof(p_buf), fmt, ap);
+    rb->vsnprintf(p_buf,sizeof(p_buf), fmt, ap);
     va_end(ap);
 
     rb->lcd_putsxy(1,mwdb_p_xtpt, (unsigned char *)p_buf);
@@ -76,7 +75,7 @@ int mwdb_findarticle(const char* filename,
     /* this is a hack till proper touchscreen keyboard input arrives */
     rb->touchscreen_set_mode(TOUCHSCREEN_BUTTON);
 #endif
-        if (rb->kbd_input(artnme,artnmelen))
+        if (rb->kbd_input(artnme,artnmelen,NULL))
         {
             artnme[0]='\0';
 #ifdef HAVE_TOUCHSCREEN

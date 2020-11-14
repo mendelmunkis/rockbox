@@ -474,7 +474,7 @@ static void input_handler(void)
 {
     char buf[32];
     rb->memset(buf, 0, sizeof(buf));
-    if(rb->kbd_input(buf, sizeof(buf)) < 0)
+    if(rb->kbd_input(buf, sizeof(buf),NULL) < 0)
         setvar(read_varid(), 0);
     else
     {

@@ -232,10 +232,7 @@ enum plugin_status plugin_start(const void* file)
                     (TV_VERTICAL_SCROLL_PREFS == TV_VERTICAL_SCROLL_PREFS && preferences->vertical_scroll_mode == VS_PAGE))
                 {
                     offset_page+= preferences->autoscroll_speed;
-#ifdef HAVE_LCD_BITMAP
                     offset_line = (preferences->overlap_page_mode)? -1:0;
-		
-#endif
                 }
                 tv_move_screen(offset_page, offset_line, SEEK_CUR);
             }
