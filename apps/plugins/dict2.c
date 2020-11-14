@@ -134,22 +134,6 @@ struct DictEntry
     struct WordData data;
 };
 
-#ifndef betoh64
-
-#ifdef ROCKBOX_LITTLE_ENDIAN
-static inline uint64_t swap64(uint64_t value)
-{
-    uint64_t hi = swap32(value >> 32);
-    uint64_t lo = swap32(value & 0xffffffff);
-    return (lo << 32) | hi;
-}
-#define betoh64(x) swap64(x)
-#else
-#define betoh64(x) (x)
-#endif
-
-#endif
-
 void str_toupper(const char *src, char *dst)
 {
     while (*src)
@@ -488,24 +472,26 @@ int dict_index_gets_from(int32_t index, char *buf, int n)
 int dict_index_entry(int32_t index, struct DictEntry *out)
 {
     int size;
-    char buf[sizeof(struct WordData)];
+    struct WordData buf;
+    struct WordData_s buf2;
 
     out->index = index;
 
     size = dict_index_gets_from(index, out->name, WORDLEN);
 
-    rb->read(Dict.fIndex, buf, Dict.DataLen);
 
     /* convert to host endianess */
     if (Dict.DataLen == sizeof(struct WordData))
     {
-        out->data.offset = betoh64( ((struct WordData *)buf)->offset );
-        out->data.size   = betoh32( ((struct WordData *)buf)->size );
+        rb->read(Dict.fIndex, &buf, Dict.DataLen);
+        out->data.offset = betoh64( buf.offset );
+        out->data.size   = betoh32( buf.size );
     }
     else
     {
-        out->data.offset = betoh32( ((struct WordData_s *)buf)->offset );
-        out->data.size   = betoh32( ((struct WordData_s *)buf)->size );
+        rb->read(Dict.fIndex, &buf2, Dict.DataLen);
+        out->data.offset = betoh32( buf2.offset );
+        out->data.size   = betoh32( buf2.size );
     }
 
     return size;
@@ -846,7 +832,7 @@ enum dict_action dict_main(void)
 #endif /*HAVE_FLASH_STORAGE*/
 
         rb->strcpy(old, search);
-        rb->kbd_input(search, WORDLEN);
+        rb->kbd_input(search, WORDLEN, NULL);
         /* exit if the search string is empty or the user didn't change it */
         if (!rb->strlen(search) ||
             (!new_search && !rb->strncmp(old, search, sizeof(old)) ))

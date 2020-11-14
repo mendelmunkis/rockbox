@@ -50,10 +50,7 @@ static int                  cols, rows;
 #ifdef HAVE_REMOTE_LCD
 static int                  remote_cols, remote_rows;
 #endif
-#ifdef HAVE_LCD_BITMAP
 static int row_height;
-#endif
-
 static char                 search[255];
 static bool                 quit;
 static int                  retval;
@@ -105,13 +102,13 @@ static void viewer_draw(const char *s)
     const char *p, *eol;
     int line, len;
     char buf[VIEWER_LINE_BUF];
+    int left_margin=0;
 
     rb->lcd_clear_display();
 
     /* Some Rockbox function restore the backlight settings; reset it */
     viewer_set_backlight(backlight);
 
-#ifdef HAVE_LCD_BITMAP
     if (txt->lines > rows)
     { 
         rb->gui_scrollbar_draw(rb->screens[SCREEN_MAIN], 0, 0,
@@ -120,7 +117,6 @@ static void viewer_draw(const char *s)
                                 VERTICAL);
         int left_margin=VIEWER_SCROLLBAR_WIDTH;
     }
-#endif
 
     /* draw main display */
     for (p=s, line=0; line<rows; line++)
@@ -133,11 +129,7 @@ static void viewer_draw(const char *s)
 
         rb->strlcpy(buf, p, len);
         buf[len] = '\0';
-#ifdef HAVE_LCD_BITMAP
         rb->lcd_putsxy(left_margin, line*row_height, buf);
-#else
-		rb->lcd_puts(0,line,buf);
-#endif
         if (*eol)
             p = eol + rb->utf8seek(eol, 1);
         else 
@@ -206,7 +198,6 @@ void viewer_init(const struct plugin_api *newrb)
 {
     rb = newrb;
 
-#ifdef HAVE_LCD_BITMAP
     rb->lcd_getstringsize("o", &cols, &row_height);
 # ifdef HAVE_REMOTE_LCD
     remote_cols = LCD_REMOTE_WIDTH / cols;
@@ -214,10 +205,6 @@ void viewer_init(const struct plugin_api *newrb)
 # endif
     cols = (LCD_WIDTH-VIEWER_SCROLLBAR_WIDTH) / cols;
     rows = LCD_HEIGHT / row_height;
-#else
-    cols = 11;
-    rows = 2;
-#endif
 
     viewer_callback = viewer_default_callback;
     scroll = 0;
