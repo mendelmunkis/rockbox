@@ -28,6 +28,8 @@
 
 #if PLUGIN_BUFFER_SIZE < 0x13000
 #define TV_MAX_PAGE 999
+#elif PLUGIN_BUFFER_SIZE > 0x80000
+#define TV_MAX_PAGE 99999
 #else
 #define TV_MAX_PAGE 9999
 #endif
