@@ -51,6 +51,8 @@ int waveptr;
 int wavflag;
 int wavdone;
 
+static fb_data *lcd_fb = NULL;
+
 WORD *wfx;
 
 DWORD dwPad1;
@@ -92,6 +94,9 @@ enum plugin_status plugin_start(const void* parameter)
 #endif
     rb->backlight_on();
     rb->lcd_clear_display();
+
+    struct viewport *vp_main = rb->lcd_set_viewport(NULL);
+    lcd_fb = vp_main->buffer->fb_ptr;
 
     VROM = (BYTE*)rb->plugin_get_audio_buffer(&size);
     ROM = (BYTE*) VROM + 0xffff * 8;
@@ -328,7 +333,7 @@ switch ( DisplaySize )
     case scale: /* Scaled to fit display */
         for(y = 0; y < LCD_HEIGHT; y++) {
         for(x = 0; x < LCD_WIDTH; x++) {
-            rb->lcd_framebuffer[y * LCD_WIDTH + x] = WorkFrame[x * NES_DISP_WIDTH / LCD_WIDTH + y * NES_DISP_HEIGHT / LCD_HEIGHT * NES_DISP_WIDTH];
+            *(lcd_fb+(y * LCD_WIDTH + x)) = WorkFrame[x * NES_DISP_WIDTH / LCD_WIDTH + y * NES_DISP_HEIGHT / LCD_HEIGHT * NES_DISP_WIDTH];
 	}}
     break;
 
