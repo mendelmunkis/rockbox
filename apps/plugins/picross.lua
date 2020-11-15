@@ -406,7 +406,7 @@ function State:fillSquare()
                 self.board[self.cursor.y][self.cursor.x] = 'x'
             end
 ]]--
-            self.board[self.cursor.y][self.cursor.x] = 'x'
+            self.board[self.cursor.y][self.cursor.x] = '*'
         end
     end
 
