@@ -77,7 +77,7 @@ void viewer_down(void);
 bool viewer_search(void);
 bool viewer_menu(void);
 void viewer_redraw(void);
-void (*viewer_shortcut)(void);
+static void (*viewer_shortcut)(void);
 bool viewer_menu_search(void);
 bool viewer_menu_scroll(void);
 bool viewer_menu_backlight(void);

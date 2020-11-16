@@ -56,7 +56,7 @@ static bool                 quit;
 static int                  retval;
 
 /* Customization (also default settings) */
-void                        (*viewer_shortcut)(void) 
+static void                 (*viewer_shortcut)(void) 
                                       = (void *)viewer_menu_search;
 static void                 (*viewer_callback)(int button)
                                       = viewer_default_callback;
@@ -115,7 +115,7 @@ static void viewer_draw(const char *s)
                                 VIEWER_SCROLLBAR_WIDTH-1, LCD_HEIGHT,
                                 txt->lines+rows-1, txt->pos, txt->pos+rows,
                                 VERTICAL);
-        int left_margin=VIEWER_SCROLLBAR_WIDTH;
+        left_margin=VIEWER_SCROLLBAR_WIDTH;
     }
 
     /* draw main display */
